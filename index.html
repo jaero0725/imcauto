@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정산 엑셀 생성기</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+<style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+        textarea { width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        button { margin-top: 10px; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+</style>
+</head>
+<body>
+<h2>정산 엑셀 생성기</h2>
+<textarea id="textInput" placeholder="데이터를 복사하여 붙여넣기 하세요."></textarea>
+<button onclick="parseTextToTable()">미리보기</button>
+<div id="tableContainer"></div>
+<button onclick="generateExcel()" style="display:none;" id="downloadBtn">엑셀 다운로드</button>
+ 
+    <script>
+        function parseTextToTable() {
+            const text = document.getElementById("textInput").value;
+            const rows = text.split("\n").map(row => row.split("\t"));
+            let tableHtml = "<table><tbody>";
+            rows.forEach(row => {
+                tableHtml += "<tr>" + row.map(cell => `<td>${cell}</td>`).join("") + "</tr>";
+            });
+            tableHtml += "</tbody></table>";
+            document.getElementById("tableContainer").innerHTML = tableHtml;
+            document.getElementById("downloadBtn").style.display = "block";
+        }
+ 
+        function generateExcel() {
+            const text = document.getElementById("textInput").value;
+            const rows = text.split("\n").map(row => row.split("\t"));
+            const ws = XLSX.utils.aoa_to_sheet(rows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+            XLSX.writeFile(wb, "generated.xlsx");
+        }
+</script>
+</body>
+</html>
