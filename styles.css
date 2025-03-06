@@ -1,10 +1,15 @@
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
+    --primary-color: #228be6;
+    --primary-hover: #1c7ed6;
+    --sidebar-bg: #2b3035;
+    --sidebar-hover: #343a40;
+    --text-primary: #495057;
+    --text-secondary: #868e96;
+    --bg-light: #f8f9fa;
+    --border-color: #e9ecef;
     --accent-color: #3498db;
     --text-color: #2c3e50;
     --light-gray: #ecf0f1;
-    --border-color: #bdc3c7;
     --sidebar-width: 250px;
 }
 
@@ -92,7 +97,7 @@ tr:hover {
 
 button {
     padding: 12px 24px;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 6px;
@@ -106,7 +111,7 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-hover);
     transform: translateY(-1px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -125,11 +130,41 @@ button:active {
 }
 
 footer {
-    margin-top: 40px;
-    text-align: center;
-    color: #7f8c8d;
-    padding: 20px 0;
-    font-size: 13px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: #495057;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #228be6;
+}
+
+.footer-copyright {
+    color: #868e96;
+    font-size: 0.9rem;
 }
 
 /* 반응형 디자인 */
@@ -161,7 +196,7 @@ footer {
 /* 사이드바 스타일 */
 .sidebar {
     width: var(--sidebar-width);
-    background-color: var(--primary-color);
+    background-color: var(--sidebar-bg);
     color: white;
     position: fixed;
     height: 100vh;
@@ -180,6 +215,7 @@ footer {
     margin: 0;
     font-size: 20px;
     font-weight: 500;
+    color: #fff;
 }
 
 .sidebar-nav {
@@ -202,13 +238,13 @@ footer {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    color: rgba(255,255,255,0.8);
+    color: #fff;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .sidebar-nav a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: var(--sidebar-hover);
     color: white;
 }
 
@@ -226,6 +262,7 @@ footer {
 .sidebar-footer {
     padding: 20px;
     border-top: 1px solid rgba(255,255,255,0.1);
+    color: #adb5bd;
 }
 
 .sidebar-footer span {
@@ -277,4 +314,10 @@ main {
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#textInput {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
 }
